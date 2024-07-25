@@ -51,7 +51,7 @@ I decided to implement using NextJs as web front end and backend; and React Nati
 
 ### ROADMAP
 #### Create Trip
-- [ ] Trip schema
+- [X] Trip schema
 - [ ] Create trip schema
 - [ ] Create trip endpoint
 - [ ] Create trip form
