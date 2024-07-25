@@ -1,0 +1,36 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "NLW-Jun24",
+    "collectionId": "1e49728f-09a8-4432-8193-edbbc581b41c",
+    "dateExported": "2024-07-25T16:11:42.472Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "6bb4de28-42af-47a9-9bd2-afcb82b36f3d",
+            "name": "Trips",
+            "containerId": "",
+            "created": "2024-07-25T16:00:56.811Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "84472fdf-62c8-42f6-88f7-1fddcff49c61",
+            "colId": "1e49728f-09a8-4432-8193-edbbc581b41c",
+            "containerId": "6bb4de28-42af-47a9-9bd2-afcb82b36f3d",
+            "name": "Create Trip",
+            "url": "http://localhost:3000/api/trips",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-07-25T16:01:12.590Z",
+            "modified": "2024-07-25T16:11:13.953Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"destination\": \"Floripa\",\n  \"startAt\": \"2024-08-20\",\n  \"endsAt\": \"2024-08-28\",\n  \"ownerName\": \"Thiago Elias\",\n  \"ownerEmail\": \"thiago@email.com\",\n  \"guestToInvite\": [\n    {\n      \"name\": \"Guest 1\",\n      \"email\": \"guest1@email.com\"\n    },\n    {\n      \"name\": \"Guest 2\",\n      \"email\": \"guest2@email.com\"\n    },\n    {\n      \"name\": \"Guest 3\",\n      \"email\": \"guest3@email.com\"\n    },\n    {\n      \"name\": \"Guest 4\",\n      \"email\": \"guest4@email.com\"\n    }\n  ]\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "mKe5tJYeE2lUDmVQy-Ps7pTFcpDAo8QqA6itCwZXfyjk_LRpIm3jN_7OoEU1ZTtKcR6LXBsiUqiaw4TTlglN5Q"
+}

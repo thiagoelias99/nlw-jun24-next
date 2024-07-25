@@ -53,7 +53,7 @@ I decided to implement using NextJs as web front end and backend; and React Nati
 #### Create Trip
 - [X] Trip schema
 - [X] Create trip schema
-- [ ] Create trip endpoint
+- [X] Create trip endpoint
 - [ ] Create trip form
 - [ ] Firebase + Firestore
 - [ ] Trip Services
