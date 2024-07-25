@@ -1,4 +1,5 @@
-import { z } from 'zod'
+import { z } from '@/lib/pt-zod'
+
 
 export interface ITrip {
   id: string
@@ -18,10 +19,12 @@ export const createTripDtoSchema = z.object({
   startAt: z.union([
     z.string().date().transform((data) => new Date(data)),
     z.string().datetime().transform((data) => new Date(data)),
+    z.date(),
   ]),
   endsAt: z.union([
-    z.string().date().transform((data) => new Date(data)),
-    z.string().datetime().transform((data) => new Date(data)),
+    z.string({required_error: 'Data de término é obrigatória'}).date().transform((data) => new Date(data)),
+    z.string({required_error: 'Data de término é obrigatória'}).datetime().transform((data) => new Date(data)),
+    z.date({required_error: 'Data de término é obrigatória'}),
   ]),
   ownerName: z.string().min(1),
   ownerEmail: z.string().email(),

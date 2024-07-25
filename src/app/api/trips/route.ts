@@ -1,5 +1,5 @@
-import { createTripDtoSchema } from '@/app/model/trip'
-import { apiErrorHandler } from '@/utils/api-error-handler'
+import { createTripDtoSchema } from '@/model/trip'
+import { apiErrorHandler } from '@/lib/api-error-handler'
 import { StatusCodes } from 'http-status-codes'
 import { NextRequest } from 'next/server'
 
