@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { createTripDtoSchema } from '@/model/trip'
 import { useEffect, useState } from 'react'
 import CustomizedInput from './customized-input'
-import { ArrowRightIcon, AtSignIcon, CalendarIcon, MapPinIcon, PlusIcon, Settings2Icon, UserRoundPlusIcon, XIcon } from 'lucide-react'
+import { ArrowRightIcon, AtSignIcon, CalendarIcon, LucideMail, LucideUser, MapPinIcon, PlusIcon, Settings2Icon, UserRoundPlusIcon, XIcon } from 'lucide-react'
 import { Card } from '../ui/card'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Calendar } from '../ui/calendar'
@@ -34,8 +34,8 @@ export default function CreateTripForm() {
 			destination: undefined,
 			startAt: undefined,
 			endsAt: undefined,
-			ownerName: 'undefined',
-			ownerEmail: 'undefined@email.com',
+			ownerName: undefined,
+			ownerEmail: undefined,
 			guestToInvite: [],
 		},
 	})
@@ -220,13 +220,59 @@ export default function CreateTripForm() {
 									</div>
 								</DialogContent>
 							</Dialog>
-							<Button type='submit' className='w-full mt-4 space-x-2'>
-								<span>Confirmar Viagem</span>
-								<ArrowRightIcon size={18} />
-							</Button>
+							<Dialog>
+								<DialogTrigger asChild>
+									<Button type='button' className='w-full mt-4 space-x-2'>
+										<span>Confirmar Viagem</span>
+										<ArrowRightIcon size={18} />
+									</Button>
+								</DialogTrigger>
+								<DialogContent>
+									<DialogHeader>
+										<DialogTitle>Confirmar criação da viagem</DialogTitle>
+										<DialogDescription>
+											Para concluir a criação da viagem para Florianópolis, Brasil nas datas de 16 a 27 de Agosto de 2024 preencha seus dados abaixo:
+										</DialogDescription>
+									</DialogHeader>
+									<FormField
+										control={form.control}
+										name="ownerName"
+										render={({ field }) => (
+											<FormItem className='w-full flex flex-1 justify-start items-center gap-2 bg-background text-foreground shadow-shape rounded-lg px-4 py-2.5'>
+												<FormControl>
+													<CustomizedInput
+														Icon={LucideUser}
+														placeholder='Seu nome completo'
+														{...field} />
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<FormField
+										control={form.control}
+										name="ownerEmail"
+										render={({ field }) => (
+											<FormItem className='w-full flex flex-1 justify-start items-center gap-2 bg-background text-foreground shadow-shape rounded-lg px-4 py-2.5'>
+												<FormControl>
+													<CustomizedInput
+														Icon={LucideMail}
+														placeholder='Seu email pessoal'
+														{...field} />
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<Button type='submit'
+									onClick={() => form.handleSubmit(onSubmit)()}
+									>
+										Confirmar criação da viagem
+									</Button>
+								</DialogContent>
+							</Dialog>
 						</Card>
 					)}
-
 				</div>
 			</form>
 		</Form>
