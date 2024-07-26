@@ -36,12 +36,12 @@
     --foreground: 240 5% 84%;  /* zinc-300 */
     --card: 240 6% 10%; /* hsl(240, 6%, 10) zinc-900 */
     --card-foreground: 240 5% 84%;  /* zinc-300 */
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 4% 16%; /* hsl(240, 4%, 16%)  zinc-800 */
+    --popover-foreground: 240 5% 84%;  /* zinc-300 */
     --primary: 79 80% 71%; /* hsl(79, 80%, 71%) lime-300 */
     --primary-foreground: 84 58% 11%; /* hsl(84, 58%, 11%) lime-950 */
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 4% 16%; /* hsl(240, 4%, 16%)  zinc-800 */
+    --secondary-foreground: 240 5% 84%;  /* zinc-300 */
     --muted: 240 4% 65%; /* hsl(240, 4%, 65%) zinc-500 */
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 217.2 32.6% 17.5%;
@@ -50,7 +50,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 79 80% 71%; /* hsl(79, 80%, 71%) lime-300 */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
