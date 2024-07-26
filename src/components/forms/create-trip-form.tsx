@@ -26,6 +26,8 @@ import {
 } from "@/components/ui/dialog"
 import Divider from '../divider'
 import { Input } from '../ui/input'
+import { api } from '@/services/api'
+import { useToast } from "@/components/ui/use-toast"
 
 export default function CreateTripForm() {
 	const form = useForm<z.infer<typeof createTripDtoSchema>>({
@@ -44,19 +46,40 @@ export default function CreateTripForm() {
 	const [showPart2, setShowPart2] = useState(false)
 	const [guestName, setGuestName] = useState('')
 	const [guestEmail, setGuestEmail] = useState('')
+	const [openConfirmDialog, setOpenConfirmDialog] = useState(false)
+	const { toast } = useToast()
 
 	async function onSubmit(values: z.infer<typeof createTripDtoSchema>) {
 		try {
-			console.log(values)
-			// form.reset()
+			const response = await api.post('/trips', values)
+
+			if (response.status === 201) {
+				toast({
+					title: "Trip criada com sucesso!",
+					description: "Acesse seu email cadastrado para continuar",
+				})
+				setOpenConfirmDialog(false)
+				form.reset()
+			} else {
+				toast({
+					title: "Erro ao criar trip",
+					description: "Verifique os dados e tente novamente",
+					variant: "destructive"
+				})
+			}
 		} catch (error) {
-			throw error
+			console.error(error)
+			toast({
+				title: "Erro ao criar trip",
+				description: "Verifique os dados e tente novamente",
+				variant: "destructive"
+			})
 		}
 	}
 
-	useEffect(() => {
-		console.log(form.formState.errors)
-	}, [form.formState.errors])
+	// useEffect(() => {
+	// 	console.log(form.formState.errors)
+	// }, [form.formState.errors])
 
 	useEffect(() => {
 		if (date?.from && date?.to) {
@@ -220,18 +243,21 @@ export default function CreateTripForm() {
 									</div>
 								</DialogContent>
 							</Dialog>
-							<Dialog>
+							<Dialog
+								open={openConfirmDialog}
+								onOpenChange={setOpenConfirmDialog}
+							>
 								<DialogTrigger asChild>
 									<Button type='button' className='w-full mt-4 space-x-2'>
 										<span>Confirmar Viagem</span>
 										<ArrowRightIcon size={18} />
 									</Button>
 								</DialogTrigger>
-								<DialogContent>
+								<DialogContent className='w-full'>
 									<DialogHeader>
 										<DialogTitle>Confirmar criação da viagem</DialogTitle>
 										<DialogDescription>
-											Para concluir a criação da viagem para Florianópolis, Brasil nas datas de 16 a 27 de Agosto de 2024 preencha seus dados abaixo:
+											Para concluir a criação da viagem para <strong className='text-foreground'>{form.getValues('destination')}</strong>, preencha seus dados abaixo:
 										</DialogDescription>
 									</DialogHeader>
 									<FormField
@@ -242,6 +268,7 @@ export default function CreateTripForm() {
 												<FormControl>
 													<CustomizedInput
 														Icon={LucideUser}
+														className='w-full'
 														placeholder='Seu nome completo'
 														{...field} />
 												</FormControl>
@@ -265,7 +292,7 @@ export default function CreateTripForm() {
 										)}
 									/>
 									<Button type='submit'
-									onClick={() => form.handleSubmit(onSubmit)()}
+										onClick={() => form.handleSubmit(onSubmit)()}
 									>
 										Confirmar criação da viagem
 									</Button>

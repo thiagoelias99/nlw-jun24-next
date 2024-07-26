@@ -12,7 +12,7 @@ interface Props extends ComponentProps<'input'> {
 
 export default function CustomizedInput({ Icon, containerClassName, ...rest }: Props) {
   return (
-    <div className='flex flex-row justify-start items-start'>
+    <div className='flex w-full flex-row justify-start items-start'>
       <Icon className='text-muted mt-2' />
       <Input
         {...rest}
