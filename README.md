@@ -54,11 +54,11 @@ I decided to implement using NextJs as web front end and backend; and React Nati
 - [X] Trip schema
 - [X] Create trip schema
 - [X] Create trip endpoint
-- [ ] Create trip form
-- [ ] Firebase + Firestore
-- [ ] Trip Services
-- [ ] Email Service
-- [ ] Send Email to Owner
+- [X] Create trip form
+- [X] Firebase + Firestore
+- [X] Trip Services
+- [X] Email Service
+- [X] Send Email to Owner
 - [ ] Confirm trip endpoint
 - [ ] Send email to guests
 - [ ] Redirect to trip details
